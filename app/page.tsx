@@ -24,7 +24,7 @@ export default function Home() {
               {stocks?.companyInfo?.symbol}
             </p>
             <div className=" p-2 rounded flex flex-col md:flex-row justify-around">
-              <div className="flex flex-row p-4 justify0-center items-center">
+              <div className="flex flex-row px-4 py-1 md:py-4 items-center">
                 <p className="text-gray-800 text-lg">
                   {stocks?.companyInfo?.price}
                 </p>
@@ -33,7 +33,7 @@ export default function Home() {
                 </p>
               </div>
               <div
-                className={`flex flex-row p-4 justify0-center items-center ${
+                className={`flex flex-row px-4 py-1 md:py-4 items-center ${
                   stocks?.companyInfo?.changes > 0
                     ? "text-lime-500"
                     : "text-red-500"
