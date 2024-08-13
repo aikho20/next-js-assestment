@@ -16,7 +16,7 @@ import { SearchIcon } from "lucide-react";
 import {
   useGetCompanySearchMutation,
   useGetStockValueMutation,
-  useGetStocksDetailsMutation,
+  useGetCompanyDetailsMutation,
 } from "@/store/action/stocksAction";
 
 export default function Search() {
@@ -29,8 +29,8 @@ export default function Search() {
   const stocks = useSelector(
     (state: RootState) => state.stocks || { search: [] }
   );
-  const [getStocksDetails, { isLoading: isGettingCompanyInfo }] =
-    useGetStocksDetailsMutation();
+  const [getCompanyDetails, { isLoading: isGettingCompanyInfo }] =
+    useGetCompanyDetailsMutation();
   const [getStockValue, { isLoading: isFetchingStockValue }] =
     useGetStockValueMutation();
 
@@ -46,7 +46,7 @@ export default function Search() {
     dispatch(setSearch(res));
   };
   const handleCompanyProfileInfo = async (e: string) => {
-    const res = await getStocksDetails({ symbol: e }).unwrap();
+    const res = await getCompanyDetails({ symbol: e }).unwrap();
     dispatch(setCompanyInfo(res?.[0]));
   };
 
@@ -102,6 +102,7 @@ export default function Search() {
                   searchResult?.map((items: SearchItemProps, index: number) => (
                     <div
                       className="flex flex-row justify-end hover:bg-slate-100 cursor-pointer"
+                      key={index}
                       onClick={() => {
                         setIsOpen(false);
                         setSearchQuery(items.symbol);
@@ -109,23 +110,16 @@ export default function Search() {
                         handleStockValue(items.symbol);
                       }}
                     >
-                      <p
-                        className="w-full text-sm text-gray-600 p-1 ho"
-                        key={index}
-                      >
+                      <p className="w-full text-sm text-gray-600 p-1 ho">
                         {items.symbol}
                       </p>
-                      <p
-                        className="w-full text-sm text-gray-600 p-1"
-                        key={index}
-                      >
+                      <p className="w-full text-sm text-gray-600 p-1">
                         {items.name}
                       </p>
                     </div>
                   ))
                 ) : (
                   <p className="text-sm p-4 text-gray-400 w-full">
-                    {" "}
                     No result found.
                   </p>
                 )}

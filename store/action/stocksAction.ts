@@ -7,7 +7,7 @@ export const accountApi = apiSlice.injectEndpoints({
         url: `api/v3/search?query=${symbol}&limit=5&apikey=${process.env.FINANCIAL_MODEL_API_KEY}`,
       }),
     }),
-    getStocksDetails: builder.mutation({
+    getCompanyDetails: builder.mutation({
       query: ({ symbol }: { symbol: string }) => ({
         url: `api/v3/profile/${symbol}?apikey=${process.env.FINANCIAL_MODEL_API_KEY}`,
         method: "GET",
@@ -33,6 +33,6 @@ export const accountApi = apiSlice.injectEndpoints({
 
 export const {
   useGetCompanySearchMutation,
-  useGetStocksDetailsMutation,
+  useGetCompanyDetailsMutation,
   useGetStockValueMutation,
 } = accountApi;
