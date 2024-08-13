@@ -67,10 +67,10 @@ export default function Search() {
   );
 
   return (
-    <div>
+    <div className="w-full">
       <Popover open={isOpen}>
         <PopoverAnchor asChild>
-          <div className="flex w-[375px]">
+          <div className="flex md:w-[375px] w-full">
             <div className="relative grow p-px">
               <SearchIcon
                 size={18}
@@ -79,7 +79,7 @@ export default function Search() {
               <Input
                 onClick={() => setIsOpen(true)}
                 placeholder="Search..."
-                className="rounded-2.5 pl-[40px] text-4 w-[375px]"
+                className="rounded-2.5 pl-[40px] text-4 md:w-[375px] w-full"
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                 }}
@@ -90,18 +90,18 @@ export default function Search() {
             </div>
           </div>
         </PopoverAnchor>
-        <PopoverContent className="w-[375px]">
-          <div className="max-h-[400px] overflow-auto">
+        <PopoverContent className="md:w-[375px] w-full">
+          <div className="max-h-[400px] overflow-auto w-full">
             {isSearchingCompany ? (
               <p className="text-sm tex-center p-4 text-gray-400 w-full">
                 Searching...
               </p>
             ) : (
-              <>
+              <div className="min-w-full">
                 {Array.isArray(searchResult) && searchResult.length > 0 ? (
                   searchResult?.map((items: SearchItemProps, index: number) => (
                     <div
-                      className="flex flex-row justify-end hover:bg-slate-100 cursor-pointer"
+                      className="flex flex-row justify-end hover:bg-slate-100 cursor-pointer w-full p-2 rounded"
                       key={index}
                       onClick={() => {
                         setIsOpen(false);
@@ -110,20 +110,17 @@ export default function Search() {
                         handleStockValue(items.symbol);
                       }}
                     >
-                      <p className="w-full text-sm text-gray-600 p-1 ho">
-                        {items.symbol}
-                      </p>
-                      <p className="w-full text-sm text-gray-600 p-1">
-                        {items.name}
+                      <p className="w-full text-xs text-gray-600 p-1 truncate">
+                        {items.symbol} - {items.name}
                       </p>
                     </div>
                   ))
                 ) : (
-                  <p className="text-sm p-4 text-gray-400 w-full">
+                  <p className="text-sm p-4 text-gray-400 min-w-full">
                     No result found.
                   </p>
                 )}
-              </>
+              </div>
             )}
           </div>
         </PopoverContent>
