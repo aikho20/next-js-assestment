@@ -53,7 +53,7 @@ export function CustomChart({ value }: CustomChartProps) {
     <Card className="my-4">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
-          <CardTitle>{value?.symbol}</CardTitle>
+          <CardTitle className="text-gray-600">{value?.symbol}</CardTitle>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
           <SelectTrigger

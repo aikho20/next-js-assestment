@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="p-5">
       <div>
-        <p className="text-2xl text-gray-600 p-2">
+        <p className="text-2xl text-primary p-2">
           {stocks?.companyInfo?.companyName}
         </p>
         <Search />
