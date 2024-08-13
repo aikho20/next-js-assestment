@@ -23,7 +23,7 @@ export default function Home() {
             <p className="text-gray-600 text-md text-bold mx-2">
               {stocks?.companyInfo?.symbol}
             </p>
-            <div className=" p-2 rounded flex flex-row justify-around">
+            <div className=" p-2 rounded flex flex-col md:flex-row justify-around">
               <div className="flex flex-row p-4 justify0-center items-center">
                 <p className="text-gray-800 text-lg">
                   {stocks?.companyInfo?.price}
