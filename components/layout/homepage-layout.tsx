@@ -37,7 +37,7 @@ export default function HomepageLayout({ children }: HomepageLayoutProps) {
             <p className="text-semibold text-lg text-white">
               D Supreme Development
             </p>
-            <div className="flex flex-row space-x-2">
+            <div className="flex space-y-2 flex-col md:flex-row md:space-x-2">
               <Input placeholder="Email Address" />
               <Button variant={"outline"}>Subscribe</Button>
             </div>
