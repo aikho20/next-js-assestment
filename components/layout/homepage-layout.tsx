@@ -39,7 +39,7 @@ export default function HomepageLayout({ children }: HomepageLayoutProps) {
             </p>
             <div className="flex space-y-2 flex-col md:flex-row md:space-x-2">
               <Input placeholder="Email Address" />
-              <Button variant={"outline"}>Subscribe</Button>
+              <Button variant={"outline"} className="max-w-[120px]">Subscribe</Button>
             </div>
           </div>
           <div className="p-5 flex flex-col items-start">
